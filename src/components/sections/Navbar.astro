@@ -1,0 +1,65 @@
+---
+import Logo from '@src/components/commons/Logo.astro';
+import Hamburguer from '@src/components/commons/Hamburguer.astro';
+---
+
+<div class="navbar">
+    <Logo />
+    <nav class="navbar__menu" data-target="navigation-menu">
+        <a href="" class="navbar__menu__item"> our company </a>
+        <a href="" class="navbar__menu__item"> locations </a>
+        <a href="" class="navbar__menu__item"> contact </a>
+    </nav>
+    <Hamburguer />
+</div>
+<style lang="scss">
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        padding: 2.125rem var(--space-lateral);
+        background-color: var(--color-white);
+        position: relative;
+        &__menu {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-black);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            row-gap: 2rem;
+            padding: 3rem var(--space-lateral);
+            opacity: 0;
+            transform: translateY(-100%);
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: -1;
+            &__item {
+                color: var(--color-white);
+                font-size: 1.5rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.04; /* 104.167% */
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                &:hover {
+                    text-decoration-line: underline;
+                    text-decoration-style: solid;
+                    text-decoration-skip-ink: none;
+                    text-decoration-thickness: auto;
+                    text-underline-offset: auto;
+                    text-underline-position: from-font;
+                }
+            }
+            &.active {
+                opacity: 1;
+                top: 100%;
+                transform: translateY(0);
+            }
+        }
+    }
+</style>

@@ -1,0 +1,22 @@
+:root {
+  --color-primary: #E7816B;
+  --color-secondary: #FFAD9B;
+  --color-white: #FFFFFF;
+  --color-black: #1D1C1E;
+  --color-light-grey: #F1F3F5;
+  --color-dark-grey: #333136;
+
+  --space-lateral: max(1.5rem, 6%);
+}
+
+@media screen and (min-width: 43.75rem) {
+  :root {
+    --space-lateral: 5.2%;
+  }
+}
+
+@media screen and (min-width: 62.5rem) {
+  :root {
+    --space-lateral: min(10.3125rem, 12%);
+  }
+}

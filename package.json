@@ -10,8 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.10",
     "@astrojs/check": "^0.9.4",
+    "@fontsource/jost": "^5.1.1",
+    "@sentry/astro": "^8.37.1",
+    "@spotlightjs/astro": "^2.1.11",
+    "astro": "^4.16.10",
     "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass-embedded": "^1.80.6"
   }
 }

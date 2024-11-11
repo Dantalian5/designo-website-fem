@@ -1,0 +1,77 @@
+<button type="button" data-action="btn-hamburguer" class="hamburguer">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 20"
+        fill="currentColor"
+    >
+        <rect
+            class="hamburguer__line hamburguer__top"
+            width="24"
+            height="4"
+            x="0"
+            y="2"
+            rx="0"></rect>
+        <rect
+            class="hamburguer__line hamburguer__middle"
+            width="24"
+            height="4"
+            x="0"
+            y="10"
+            rx="0"></rect>
+        <rect
+            class="hamburguer__line hamburguer__bottom"
+            width="24"
+            height="4"
+            x="0"
+            y="18"
+            rx="0"></rect>
+    </svg>
+</button>
+<style lang="scss">
+    .hamburguer {
+        cursor: pointer;
+        display: block;
+        &__line {
+            transition:
+                y 200ms ease-in 200ms,
+                transform 200ms ease-in,
+                opacity 0ms 200ms;
+            transform-origin: center;
+        }
+    }
+    .active.hamburguer .hamburguer {
+        &__line {
+            transition:
+                y 200ms ease-in,
+                transform 200ms ease-in 200ms,
+                opacity 0ms 200ms;
+        }
+        &__top,
+        &__bottom {
+            y: 8px;
+        }
+        &__top {
+            transform: rotate(45deg);
+        }
+        &__middle {
+            opacity: 0;
+        }
+        &__bottom {
+            transform: rotate(-45deg);
+        }
+    }
+</style>
+<script>
+    const hamburguer = document.querySelector(
+        'button[data-action="btn-hamburguer"]'
+    );
+    hamburguer?.addEventListener('click', () => {
+        hamburguer.classList.toggle('active');
+
+        document
+            .querySelector('[data-target="navigation-menu"]')
+            ?.classList.toggle('active');
+    });
+</script>
