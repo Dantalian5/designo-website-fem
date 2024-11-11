@@ -2,6 +2,56 @@
 import Button from '@src/components/commons/Button.astro';
 ---
 
-<div>
-    <Button>Button</Button>
-</div>
+<header class="header">
+    <div class="header__hero">
+        <div class="header__info">
+            <h1 class="header__title">
+                Award-winning custom designs and digital branding solutions
+            </h1>
+            <p class="header__body">
+                With over 10 years in the industry, we are experienced in
+                creating fully responsive websites, app design, and engaging
+                brand experiences. Find out more about our services.
+            </p>
+            <div class="header__cta">
+                <Button variant="white">Learn More</Button>
+            </div>
+        </div>
+        <img
+            src="/assets/home/desktop/image-hero-phone.png"
+            alt="A Phone with a web page"
+        />
+    </div>
+</header>
+<style lang="scss">
+    .header {
+        &__hero {
+            background-color: var(--color-primary);
+            padding-inline: var(--space-lateral);
+        }
+        &__info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        &__title {
+            text-align: center;
+            color: var(--color-white);
+            font-size: 2rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.12; /* 112.5% */
+            margin-bottom: 0.875rem;
+        }
+        &__body {
+            text-align: center;
+            color: var(--color-white);
+            font-size: 0.9375rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.62; /* 162.5% */
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>

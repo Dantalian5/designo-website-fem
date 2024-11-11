@@ -1,9 +1,9 @@
 ---
 interface Props {
     href?: string;
-    variant?: 'light' | 'dark';
+    variant?: 'white' | 'primary';
 }
-const { href, variant = 'dark' } = Astro.props;
+const { href, variant = 'primary' } = Astro.props;
 const btnClass = `button ${variant}`;
 ---
 
@@ -18,8 +18,30 @@ const btnClass = `button ${variant}`;
         </button>
     )
 }
-<style lang=scss">
-.button{
-
-}
+<style lang="scss">
+    .button {
+        display: block;
+        width: fit-content;
+        padding: 1rem 1.5rem;
+        border: none;
+        font-size: 0.9375rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        &.white {
+            background-color: var(--color-white);
+            color: var(--color-dark-grey);
+        }
+        &.primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        &:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+        }
+    }
 </style>
