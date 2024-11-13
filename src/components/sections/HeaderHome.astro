@@ -17,29 +17,37 @@ import Button from '@src/components/commons/Button.astro';
                 <Button variant="white">Learn More</Button>
             </div>
         </div>
-        <img
-            class="header__image"
-            data-target="hero-paralax-image"
-            src="/assets/home/desktop/image-hero-phone.png"
-            alt="A Phone with a web page"
-        />
+        <div class="header__img">
+            <img
+                class="header__image"
+                data-target="hero-paralax-image"
+                src="/assets/home/desktop/image-hero-phone.png"
+                alt="A Phone with a web page"
+            />
+        </div>
     </div>
 </header>
 <style lang="scss">
     .header {
         &__hero {
+            min-height: 52.6875rem;
             background-color: var(--color-primary);
             padding-inline: var(--space-lateral);
             padding-block: 5rem;
             position: relative;
             overflow: hidden;
-            min-height: 52.6875rem;
+            background-image: url('/assets/home/desktop/bg-pattern-hero-home.svg');
+            background-repeat: no-repeat;
+            background-position: center left 0;
+            background-size: auto 76%;
         }
         &__info {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            max-width: 33.75rem;
         }
         &__title {
             text-align: center;
@@ -48,7 +56,7 @@ import Button from '@src/components/commons/Button.astro';
             font-style: normal;
             font-weight: 500;
             line-height: 1.12; /* 112.5% */
-            margin-bottom: 0.875rem;
+            margin-bottom: 1rem;
         }
         &__body {
             text-align: center;
@@ -56,61 +64,114 @@ import Button from '@src/components/commons/Button.astro';
             font-size: 0.9375rem;
             font-style: normal;
             font-weight: 400;
-            line-height: 1.62; /* 162.5% */
+            line-height: 1.66; /* 162.5% */
             margin-bottom: 1.5rem;
+            max-width: 27.8125rem;
+        }
+        &__img {
+            flex: 1 1 auto;
+            height: 250px;
+            position: relative;
         }
         &__image {
             position: absolute;
             left: 50%;
-            top: calc(100% - 550px);
-            width: 160%;
+            top: -25%;
+            width: 180%;
+            max-width: 650px;
             transform: translate(-50%, 0);
+        }
+    }
+    @media (min-width: 43.75rem) {
+        .header {
+            padding-inline: var(--space-lateral);
+            &__hero {
+                padding-block: 3.75rem;
+                border-radius: 15px;
+                background-position: center left 170px;
+            }
+            &__title {
+                font-size: 3rem;
+                line-height: 1;
+                margin-bottom: 1.5rem;
+            }
+            &__body {
+                font-size: 1rem;
+            }
+            &__image {
+                top: -45%;
+            }
+        }
+    }
+    @media (min-width: 62.5rem) {
+        .header {
+            min-height: none;
+            &__hero {
+                padding: 9.0625rem 5.9375rem;
+                background-position: center right 0;
+                background-size: auto 100%;
+                display: flex;
+                justify-content: stretch;
+                align-items: flex-start;
+            }
+            &__title {
+                font-size: 3.75rem;
+                line-height: 1;
+                margin-bottom: 1.5rem;
+            }
+            &__body {
+                font-size: 1.125rem;
+                line-height: 1.66;
+            }
+            &__image {
+                top: -50%;
+            }
         }
     }
 </style>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const parallaxSection: HTMLElement | null = document.querySelector(
-            '[data-target="hero-paralax-wrapper"]'
-        );
-        const parallaxImage: HTMLElement | null = document.querySelector(
-            "[data-target='hero-paralax-image']"
-        );
-
-        function handleParallax() {
-            if (parallaxSection && parallaxImage) {
-                const rect = parallaxSection.getBoundingClientRect();
-                const windowHeight =
-                    window.innerHeight || document.documentElement.clientHeight;
-
-                if (rect.bottom <= windowHeight && rect.bottom >= 0) {
-                    const distanceFromBottom = windowHeight - rect.bottom;
-                    const parallaxSpeed = 0.4;
-                    const parallaxOffset = distanceFromBottom * parallaxSpeed;
-
-                    parallaxImage.style.transform = `translate(-50%, ${parallaxOffset}px)`;
-                }
-            }
-        }
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        window.addEventListener('scroll', handleParallax);
-                    } else {
-                        window.removeEventListener('scroll', handleParallax);
-                    }
-                });
-            },
-            {
-                root: null,
-                threshold: 0,
-            }
-        );
-
-        if (parallaxSection) {
-            observer.observe(parallaxSection);
-        }
-    });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const parallaxSection: HTMLElement | null = document.querySelector(
+    //         '[data-target="hero-paralax-wrapper"]'
+    //     );
+    //     const parallaxImage: HTMLElement | null = document.querySelector(
+    //         "[data-target='hero-paralax-image']"
+    //     );
+    //
+    //     function handleParallax() {
+    //         if (parallaxSection && parallaxImage) {
+    //             const rect = parallaxSection.getBoundingClientRect();
+    //             const windowHeight =
+    //                 window.innerHeight || document.documentElement.clientHeight;
+    //
+    //             if (rect.bottom <= windowHeight && rect.bottom >= 0) {
+    //                 const distanceFromBottom = windowHeight - rect.bottom;
+    //                 const parallaxSpeed = 0.4;
+    //                 const parallaxOffset = distanceFromBottom * parallaxSpeed;
+    //
+    //                 parallaxImage.style.transform = `translate(-50%, ${parallaxOffset}px)`;
+    //             }
+    //         }
+    //     }
+    //
+    //     const observer = new IntersectionObserver(
+    //         (entries) => {
+    //             entries.forEach((entry) => {
+    //                 if (entry.isIntersecting) {
+    //                     window.addEventListener('scroll', handleParallax);
+    //                 } else {
+    //                     window.removeEventListener('scroll', handleParallax);
+    //                 }
+    //             });
+    //         },
+    //         {
+    //             root: null,
+    //             threshold: 0,
+    //         }
+    //     );
+    //
+    //     if (parallaxSection) {
+    //         observer.observe(parallaxSection);
+    //     }
+    // });
 </script>
