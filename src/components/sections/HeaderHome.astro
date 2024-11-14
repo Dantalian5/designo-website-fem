@@ -1,5 +1,7 @@
 ---
 import Button from '@src/components/commons/Button.astro';
+import { Picture } from 'astro:assets';
+import heroImage from '@src/assets/home/desktop/image-hero-phone.png';
 ---
 
 <header class="header">
@@ -17,24 +19,30 @@ import Button from '@src/components/commons/Button.astro';
                 <Button variant="white">Learn More</Button>
             </div>
         </div>
-        <div class="header__img">
-            <img
-                class="header__image"
-                data-target="hero-paralax-image"
-                src="/assets/home/desktop/image-hero-phone.png"
-                alt="A Phone with a web page"
+        <div class="header__image" data-target="hero-paralax-image">
+            <Picture
+                class="header__img"
+                src={heroImage}
+                formats={['webp', 'png']}
+                alt="A cellphone with a frame design"
             />
         </div>
     </div>
 </header>
 <style lang="scss">
     .header {
+        position: relative;
+        margin-bottom: 5rem;
         &__hero {
-            min-height: 52.6875rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            column-gap: 6.125rem;
+            row-gap: 5rem;
             background-color: var(--color-primary);
             padding-inline: var(--space-lateral);
             padding-block: 5rem;
-            position: relative;
             overflow: hidden;
             background-image: url('/assets/home/desktop/bg-pattern-hero-home.svg');
             background-repeat: no-repeat;
@@ -46,8 +54,8 @@ import Button from '@src/components/commons/Button.astro';
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 100%;
             max-width: 33.75rem;
+            width: 100%;
         }
         &__title {
             text-align: center;
@@ -68,18 +76,20 @@ import Button from '@src/components/commons/Button.astro';
             margin-bottom: 1.5rem;
             max-width: 27.8125rem;
         }
-        &__img {
-            flex: 1 1 auto;
-            height: 250px;
-            position: relative;
-        }
         &__image {
+            position: relative;
+            max-width: 17.5rem;
+            min-height: 300px;
+            width: 100%;
+        }
+        &__img {
             position: absolute;
             left: 50%;
-            top: -25%;
-            width: 180%;
-            max-width: 650px;
+            width: 100%;
             transform: translate(-50%, 0);
+            filter: drop-shadow(20px -40px 50px rgba(93, 2, 2, 0.7));
+            box-shadow: (20px -40px 50px rgba(93, 2, 2, 0));
+            transition: top 0.1s;
         }
     }
     @media (min-width: 43.75rem) {
@@ -87,6 +97,7 @@ import Button from '@src/components/commons/Button.astro';
             padding-inline: var(--space-lateral);
             &__hero {
                 padding-block: 3.75rem;
+                row-gap: 4.375rem;
                 border-radius: 15px;
                 background-position: center left 170px;
             }
@@ -99,79 +110,102 @@ import Button from '@src/components/commons/Button.astro';
                 font-size: 1rem;
             }
             &__image {
-                top: -45%;
+                min-height: 320px;
             }
         }
     }
-    @media (min-width: 62.5rem) {
+    @media (min-width: 75rem) {
         .header {
-            min-height: none;
             &__hero {
+                flex-direction: row;
+                align-items: stretch;
+                justify-content: space-between;
                 padding: 9.0625rem 5.9375rem;
                 background-position: center right 0;
                 background-size: auto 100%;
-                display: flex;
-                justify-content: stretch;
+            }
+            &__info {
+                flex: 1 1 33.75rem;
+                width: auto;
                 align-items: flex-start;
             }
             &__title {
-                font-size: 3.75rem;
-                line-height: 1;
-                margin-bottom: 1.5rem;
+                text-align: left;
+                margin-bottom: 2rem;
             }
             &__body {
-                font-size: 1.125rem;
-                line-height: 1.66;
+                text-align: left;
+                margin-bottom: 2.5rem;
             }
             &__image {
-                top: -50%;
+                flex: 1 1 17.5rem;
+                width: auto;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 1006px;
+                height: 594px;
+                border-radius: 297px 297px 297px 0px;
+                opacity: 0.5023;
+                background-color: var(--color-light-grey);
+                z-index: -1;
             }
         }
     }
 </style>
 <script>
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     const parallaxSection: HTMLElement | null = document.querySelector(
-    //         '[data-target="hero-paralax-wrapper"]'
-    //     );
-    //     const parallaxImage: HTMLElement | null = document.querySelector(
-    //         "[data-target='hero-paralax-image']"
-    //     );
-    //
-    //     function handleParallax() {
-    //         if (parallaxSection && parallaxImage) {
-    //             const rect = parallaxSection.getBoundingClientRect();
-    //             const windowHeight =
-    //                 window.innerHeight || document.documentElement.clientHeight;
-    //
-    //             if (rect.bottom <= windowHeight && rect.bottom >= 0) {
-    //                 const distanceFromBottom = windowHeight - rect.bottom;
-    //                 const parallaxSpeed = 0.4;
-    //                 const parallaxOffset = distanceFromBottom * parallaxSpeed;
-    //
-    //                 parallaxImage.style.transform = `translate(-50%, ${parallaxOffset}px)`;
-    //             }
-    //         }
-    //     }
-    //
-    //     const observer = new IntersectionObserver(
-    //         (entries) => {
-    //             entries.forEach((entry) => {
-    //                 if (entry.isIntersecting) {
-    //                     window.addEventListener('scroll', handleParallax);
-    //                 } else {
-    //                     window.removeEventListener('scroll', handleParallax);
-    //                 }
-    //             });
-    //         },
-    //         {
-    //             root: null,
-    //             threshold: 0,
-    //         }
-    //     );
-    //
-    //     if (parallaxSection) {
-    //         observer.observe(parallaxSection);
-    //     }
-    // });
+    document.addEventListener('DOMContentLoaded', () => {
+        const parallaxSection: HTMLElement | null = document.querySelector(
+            '[data-target="hero-paralax-wrapper"]'
+        );
+        const parallaxImage: HTMLElement | null = document.querySelector(
+            "[data-target='hero-paralax-image']"
+        );
+
+        function handleParallax() {
+            if (parallaxSection && parallaxImage) {
+                const rect = parallaxSection.getBoundingClientRect();
+                const windowHeight =
+                    window.innerHeight || document.documentElement.clientHeight;
+
+                if (rect.bottom <= windowHeight && rect.bottom >= 0) {
+                    const distanceFromBottom = windowHeight - rect.bottom;
+                    const parallaxSpeed = 0.3;
+                    let parallaxOffset = 0;
+                    if (distanceFromBottom < window.scrollY) {
+                        parallaxOffset = distanceFromBottom * parallaxSpeed;
+                    } else {
+                        parallaxOffset = window.scrollY * parallaxSpeed;
+                    }
+                    parallaxImage.style.top =
+                        parallaxOffset >= 0 ? `${parallaxOffset}px` : '0px';
+                } else {
+                    parallaxImage.style.top = '0px';
+                }
+            }
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        window.addEventListener('scroll', handleParallax);
+                    } else {
+                        window.removeEventListener('scroll', handleParallax);
+                    }
+                });
+            },
+            {
+                root: null,
+                threshold: 0,
+            }
+        );
+
+        if (parallaxSection) {
+            observer.observe(parallaxSection);
+        }
+    });
 </script>
