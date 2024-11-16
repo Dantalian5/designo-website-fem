@@ -157,55 +157,79 @@ import heroImage from '@src/assets/home/desktop/image-hero-phone.png';
     }
 </style>
 <script>
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const parallaxSection: HTMLElement | null = document.querySelector(
+    //         '[data-target="hero-paralax-wrapper"]'
+    //     );
+    //     const parallaxImage: HTMLElement | null = document.querySelector(
+    //         "[data-target='hero-paralax-image']"
+    //     );
+    //
+    //     function handleParallax() {
+    //         if (parallaxSection && parallaxImage) {
+    //             const rect = parallaxSection.getBoundingClientRect();
+    //             const windowHeight =
+    //                 window.innerHeight || document.documentElement.clientHeight;
+    //
+    //             if (rect.bottom <= windowHeight && rect.bottom >= 0) {
+    //                 const distanceFromBottom = windowHeight - rect.bottom;
+    //                 const parallaxSpeed = 0.3;
+    //                 let parallaxOffset = 0;
+    //                 if (distanceFromBottom < window.scrollY) {
+    //                     parallaxOffset = distanceFromBottom * parallaxSpeed;
+    //                 } else {
+    //                     parallaxOffset = window.scrollY * parallaxSpeed;
+    //                 }
+    //                 parallaxImage.style.top =
+    //                     parallaxOffset >= 0 ? `${parallaxOffset}px` : '0px';
+    //             } else {
+    //                 parallaxImage.style.top = '0px';
+    //             }
+    //         }
+    //     }
+    //
+    //     const observer = new IntersectionObserver(
+    //         (entries) => {
+    //             entries.forEach((entry) => {
+    //                 if (entry.isIntersecting) {
+    //                     window.addEventListener('scroll', handleParallax);
+    //                 } else {
+    //                     window.removeEventListener('scroll', handleParallax);
+    //                 }
+    //             });
+    //         },
+    //         {
+    //             root: null,
+    //             threshold: 0,
+    //         }
+    //     );
+    //
+    //     if (parallaxSection) {
+    //         observer.observe(parallaxSection);
+    //     }
+    // });
+
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
     document.addEventListener('DOMContentLoaded', () => {
-        const parallaxSection: HTMLElement | null = document.querySelector(
-            '[data-target="hero-paralax-wrapper"]'
-        );
-        const parallaxImage: HTMLElement | null = document.querySelector(
+        const parallaxImage = document.querySelector(
             "[data-target='hero-paralax-image']"
         );
 
-        function handleParallax() {
-            if (parallaxSection && parallaxImage) {
-                const rect = parallaxSection.getBoundingClientRect();
-                const windowHeight =
-                    window.innerHeight || document.documentElement.clientHeight;
-
-                if (rect.bottom <= windowHeight && rect.bottom >= 0) {
-                    const distanceFromBottom = windowHeight - rect.bottom;
-                    const parallaxSpeed = 0.3;
-                    let parallaxOffset = 0;
-                    if (distanceFromBottom < window.scrollY) {
-                        parallaxOffset = distanceFromBottom * parallaxSpeed;
-                    } else {
-                        parallaxOffset = window.scrollY * parallaxSpeed;
-                    }
-                    parallaxImage.style.top =
-                        parallaxOffset >= 0 ? `${parallaxOffset}px` : '0px';
-                } else {
-                    parallaxImage.style.top = '0px';
-                }
-            }
-        }
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        window.addEventListener('scroll', handleParallax);
-                    } else {
-                        window.removeEventListener('scroll', handleParallax);
-                    }
-                });
-            },
-            {
-                root: null,
-                threshold: 0,
-            }
-        );
-
-        if (parallaxSection) {
-            observer.observe(parallaxSection);
+        if (parallaxImage) {
+            gsap.to(parallaxImage, {
+                y: 80,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: "[data-target='hero-paralax-wrapper']",
+                    start: 'bottom bottom',
+                    end: 'bottom top',
+                    scrub: true,
+                },
+            });
         }
     });
 </script>

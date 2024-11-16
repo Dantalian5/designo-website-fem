@@ -1,91 +1,199 @@
+---
+import SvgArrow from '@src/components/svg/SvgArrow.astro';
+interface Props {
+    webLink?: boolean;
+    appLink?: boolean;
+    graphicLink?: boolean;
+}
+
+const { webLink = true, appLink = true, graphicLink = true } = Astro.props;
+---
+
 <section class="section">
     <ul class="gallery">
-        <li class="gallery__item item--1">
-            <p class="gallery__title">Web Design</p>
-            <a class="gallery__link" href=""
-                >View Project <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="5"
-                    height="10"
-                    viewBox="0 0 5 10"
-                    fill="none"
-                >
-                    <path
-                        d="M1 1.13477L5 5.13477L1 9.13477"
-                        stroke="#E7816B"
-                        stroke-width="2"></path>
-                </svg></a
-            >
-        </li>
+        {
+            graphicLink && (
+                <li class="gallery__item">
+                    <a
+                        class="gallery__link"
+                        href="/portfolio/graphic-design"
+                        aria-label="View web design projects"
+                    >
+                        <span class="gallery__link__title">graphic design</span>
+                        <span class="gallery__link__subtitle">
+                            view projects
+                            <SvgArrow />
+                        </span>
+                    </a>
+                </li>
+            )
+        }
+        {
+            appLink && (
+                <li class="gallery__item">
+                    <a
+                        class="gallery__link"
+                        href="/portfolio/app-design"
+                        aria-label="View web design projects"
+                    >
+                        <span class="gallery__link__title">app design</span>
+                        <span class="gallery__link__subtitle">
+                            view projects
+                            <SvgArrow />
+                        </span>
+                    </a>
+                </li>
+            )
+        }
+        {
+            webLink && (
+                <li class="gallery__item">
+                    <a
+                        class="gallery__link"
+                        href="/portfolio/web-design"
+                        aria-label="View web design projects"
+                    >
+                        <span class="gallery__link__title">web design</span>
+                        <span class="gallery__link__subtitle">
+                            view projects
+                            <SvgArrow />
+                        </span>
+                    </a>
+                </li>
+            )
+        }
     </ul>
 </section>
 <style lang="scss">
     .gallery {
         display: grid;
+        grid-auto-rows: 1fr;
+        row-gap: 1.5rem;
+        column-gap: 1.875rem;
         &__item {
             width: 100%;
-            height: 15.625rem;
+            min-height: 15.625rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background-color: #000;
+            overflow: hidden;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-size: cover;
+                background-position: center;
+                z-index: 1;
+                opacity: 0.5;
+            }
+            &:nth-child(1) {
+                order: 3;
+                &::before {
+                    background-image: url('/assets/home/mobile/image-graphic-design.jpg');
+                }
+            }
+            &:nth-child(2) {
+                order: 2;
+                &::before {
+                    background-image: url('/assets/home/mobile/image-app-design.jpg');
+                }
+            }
+            &:nth-child(3) {
+                order: 1;
+                &::before {
+                    background-image: url('/assets/home/mobile/image-web-design.jpg');
+                }
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: #e7816b;
+                opacity: 0;
+                z-index: 2;
+                transition: all 0.3s;
+                border-radius: 15px;
+            }
+            &:hover {
+                &::after {
+                    opacity: 0.7;
+                    inset: 0;
+                }
+            }
+        }
+        &__link {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 0.75rem;
-            border-radius: 15px;
-            background-color: #000;
-            overflow: hidden;
             position: relative;
-            &::after {
-                content: '';
-                position: absolute;
-                inset: 50%;
-                background: #e7816b;
-                opacity: 0;
-                z-index: 2;
-                transition: all 1s;
-                border-radius: 15px;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            &__title,
+            &__subtitle {
+                color: var(--color-white);
+                font-weight: 500;
+                text-transform: uppercase;
+                text-align: center;
+                font-style: normal;
             }
-            &:hover {
-                &::after {
-                    opacity: 0.6;
-                    inset: 0;
+            &__title {
+                font-size: 1.75rem;
+                font-weight: 500;
+                line-height: 1.28; /* 128.571% */
+                letter-spacing: 1.4px;
+            }
+            &__subtitle {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.9375rem;
+                line-height: normal;
+                letter-spacing: 5px;
+            }
+        }
+    }
+    @media (min-width: 43.75rem) {
+        .gallery {
+            &__item {
+                min-height: 12.5rem;
+                &:nth-child(1)::before {
+                    background-image: url('/assets/home/tablet/image-graphic-design.jpg');
+                }
+                &:nth-child(2)::before {
+                    background-image: url('/assets/home/tablet/image-app-design.jpg');
+                }
+                &:nth-child(3)::before {
+                    background-image: url('/assets/home/tablet/image-web-design.jpg');
                 }
             }
         }
-        &__title,
-        &__link {
-            color: var(--color-white);
-            font-weight: 500;
-            text-transform: uppercase;
-            text-align: center;
-            font-style: normal;
-            z-index: 3;
-        }
-        &__title {
-            font-size: 1.75rem;
-            font-weight: 500;
-            line-height: 1.28; /* 128.571% */
-            letter-spacing: 1.4px;
-        }
-        &__link {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            line-height: normal;
-            letter-spacing: 5px;
-        }
     }
-    .item {
-        &--1::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url('/assets/home/mobile/image-web-design.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-            opacity: 0.5;
+    @media (min-width: 62.5rem) {
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+            &__item {
+                min-height: 18.75rem;
+                &:nth-child(1)::before {
+                    background-image: url('/assets/home/desktop/image-graphic-design.jpg');
+                }
+                &:nth-child(2) {
+                    &::before {
+                        background-image: url('/assets/home/desktop/image-app-design.jpg');
+                    }
+                }
+                &:nth-child(3) {
+                    grid-row: 1 / 3;
+                    &::before {
+                        background-image: url('/assets/home/desktop/image-web-design-large.jpg');
+                    }
+                }
+            }
         }
     }
 </style>
