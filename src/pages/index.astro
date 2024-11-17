@@ -1,14 +1,14 @@
 ---
 import Layout from '@src/layouts/BaseLayout.astro';
-import HeaderHome from '@src/components/sections/HeaderHome.astro';
-import LinkGallery from '@src/components/sections/LinkGallery.astro';
-import AboutHome from '@src/components/sections/AboutHome.astro';
-import ContactCTA from '@src/components/sections/ContactCTA.astro';
+import Header from '@src/components/sections/home/Header.astro';
+import About from '@src/components/sections/home/About.astro';
+import Navigation from '@src/components/sections/shared/Navigation.astro';
+import Contact from '@src/components/sections/shared/ContactCTA.astro';
 ---
 
 <Layout title="Designo | by MV">
-    <HeaderHome />
-    <LinkGallery />
-    <AboutHome />
-    <ContactCTA />
+    <Header />
+    <Navigation />
+    <About />
+    <Contact />
 </Layout>

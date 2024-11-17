@@ -5,7 +5,7 @@ import Button from '@src/components/commons/Button.astro';
 <section class="section-cta">
     <div class="cta__wrapper">
         <div class="cta__info">
-            <p class="cta__title">Let’s talk about your project</p>
+            <p class="cta__title">Let’s talk about <br /> your project</p>
             <p class="cta__body">
                 Ready to take it to the next level? Contact us today and find
                 out how our expertise can help your business grow.
@@ -34,12 +34,13 @@ import Button from '@src/components/commons/Button.astro';
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            row-gap: 2rem;
+            justify-content: space-between;
+            gap: 2rem;
             border-radius: 15px;
             background-color: var(--color-primary);
-            background: url('/assets/shared/desktop/bg-pattern-call-to-action.svg')
-                no-repeat;
+            background-image: url('/assets/shared/desktop/bg-pattern-call-to-action.svg');
+            background-repeat: no-repeat;
+            background-position: center left 43%;
             padding-inline: 1.5rem;
             padding-block: 4rem;
         }
@@ -47,6 +48,7 @@ import Button from '@src/components/commons/Button.astro';
             color: var(--color-white);
             text-align: center;
             font-style: normal;
+            max-width: 28.125rem;
         }
         &__title {
             font-size: 2rem;
@@ -61,6 +63,40 @@ import Button from '@src/components/commons/Button.astro';
         }
         &__btn {
             width: fit-content;
+        }
+    }
+    @media (min-width: 43.75rem) {
+        .section-cta {
+            &::after {
+                top: 75%;
+            }
+        }
+        .cta {
+            &__wrapper {
+                padding-block: 3.5625rem;
+                background-position: center left 10%;
+            }
+            &__title {
+                font-size: 2.5rem;
+                line-height: 1;
+                margin-bottom: 1rem;
+            }
+            &__body {
+                font-size: 1rem;
+                line-height: 1.62;
+            }
+        }
+    }
+    @media (min-width: 1000px) {
+        .cta {
+            &__wrapper {
+                padding: 4.5rem 5.9375rem;
+                flex-direction: row;
+                background-position: center right 0;
+            }
+            &__info {
+                text-align: left;
+            }
         }
     }
 </style>
