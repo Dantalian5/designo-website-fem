@@ -20,12 +20,13 @@ import heroImage from '@src/assets/home/image-hero-phone.png';
             </div>
         </div>
         <div class="header__image" data-target="hero-paralax-image">
-            <Picture
-                class="header__img"
-                src={heroImage}
-                formats={['webp', 'png']}
-                alt="A cellphone with a frame design"
-            />
+            <div class="header__img">
+                <Picture
+                    src={heroImage}
+                    formats={['webp', 'png']}
+                    alt="A cellphone with a frame design"
+                />
+            </div>
         </div>
     </div>
 </header>
@@ -81,15 +82,21 @@ import heroImage from '@src/assets/home/image-hero-phone.png';
             max-width: 17.5rem;
             min-height: 300px;
             width: 100%;
+            perspective: 100vh;
+            perspective-origin: bottom center;
         }
         &__img {
             position: absolute;
             left: 50%;
             width: 100%;
             transform: translate(-50%, 0);
-            filter: drop-shadow(20px -40px 50px rgba(93, 2, 2, 0.7));
-            box-shadow: (20px -40px 50px rgba(93, 2, 2, 0));
+            transform-origin: center bottom;
             transition: top 0.1s;
+            filter: drop-shadow(20px -40px 50px rgba(93, 2, 2, 0.7));
+            animation: 1s ease-out forwards popIn;
+            & img {
+                width: 100%;
+            }
         }
     }
     @media (min-width: 43.75rem) {
@@ -155,60 +162,16 @@ import heroImage from '@src/assets/home/image-hero-phone.png';
             }
         }
     }
+    @keyframes popIn {
+        from {
+            transform: translate(-50%, 0) rotate3d(1, 0, 0, 90deg);
+        }
+        to {
+            transform: translate(-50%, 0) rotate3d(1, 0, 0, 0deg);
+        }
+    }
 </style>
 <script>
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     const parallaxSection: HTMLElement | null = document.querySelector(
-    //         '[data-target="hero-paralax-wrapper"]'
-    //     );
-    //     const parallaxImage: HTMLElement | null = document.querySelector(
-    //         "[data-target='hero-paralax-image']"
-    //     );
-    //
-    //     function handleParallax() {
-    //         if (parallaxSection && parallaxImage) {
-    //             const rect = parallaxSection.getBoundingClientRect();
-    //             const windowHeight =
-    //                 window.innerHeight || document.documentElement.clientHeight;
-    //
-    //             if (rect.bottom <= windowHeight && rect.bottom >= 0) {
-    //                 const distanceFromBottom = windowHeight - rect.bottom;
-    //                 const parallaxSpeed = 0.3;
-    //                 let parallaxOffset = 0;
-    //                 if (distanceFromBottom < window.scrollY) {
-    //                     parallaxOffset = distanceFromBottom * parallaxSpeed;
-    //                 } else {
-    //                     parallaxOffset = window.scrollY * parallaxSpeed;
-    //                 }
-    //                 parallaxImage.style.top =
-    //                     parallaxOffset >= 0 ? `${parallaxOffset}px` : '0px';
-    //             } else {
-    //                 parallaxImage.style.top = '0px';
-    //             }
-    //         }
-    //     }
-    //
-    //     const observer = new IntersectionObserver(
-    //         (entries) => {
-    //             entries.forEach((entry) => {
-    //                 if (entry.isIntersecting) {
-    //                     window.addEventListener('scroll', handleParallax);
-    //                 } else {
-    //                     window.removeEventListener('scroll', handleParallax);
-    //                 }
-    //             });
-    //         },
-    //         {
-    //             root: null,
-    //             threshold: 0,
-    //         }
-    //     );
-    //
-    //     if (parallaxSection) {
-    //         observer.observe(parallaxSection);
-    //     }
-    // });
-
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -221,7 +184,7 @@ import heroImage from '@src/assets/home/image-hero-phone.png';
 
         if (parallaxImage) {
             gsap.to(parallaxImage, {
-                y: 80,
+                y: 100,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: "[data-target='hero-paralax-wrapper']",

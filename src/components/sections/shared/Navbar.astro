@@ -1,10 +1,11 @@
 ---
-import Logo from '@src/components/commons/Logo.astro';
+import { Image } from 'astro:assets';
+import Logo from '@src/assets/shared/logo-dark.png';
 import Hamburguer from '@src/components/commons/Hamburguer.astro';
 ---
 
 <div class="navbar">
-    <Logo />
+    <Image class="navbar__logo" src={Logo} alt="Designo Logo" />
     <nav class="navbar__menu" data-target="navigation-menu">
         <a href="" class="navbar__menu__item"> our company </a>
         <a href="" class="navbar__menu__item"> locations </a>
@@ -23,6 +24,10 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
         padding: 2.125rem var(--space-lateral);
         background-color: var(--color-white);
         position: relative;
+        &__logo {
+            width: 12.625rem;
+            height: auto;
+        }
         &__menu {
             position: absolute;
             top: -100%;
