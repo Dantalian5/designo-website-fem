@@ -5,66 +5,41 @@ import Projects from '@src/components/sections/portfolio/Projects.astro';
 import Navigation from '@src/components/sections/shared/Navigation.astro';
 import ContactCTA from '@src/components/sections/shared/ContactCTA.astro';
 
-import expressImg from '@src/assets/web-design/image-express.jpg';
-import campImg from '@src/assets/web-design/image-camp.jpg';
-import blogrImg from '@src/assets/web-design/image-blogr.jpg';
-import photonImg from '@src/assets/web-design/image-photon.jpg';
-import builderImg from '@src/assets/web-design/image-builder.jpg';
-import transferImg from '@src/assets/web-design/image-transfer.jpg';
+import waterImg from '@src/assets/graphic-design/image-boxed-water.jpg';
+import changeImg from '@src/assets/graphic-design/image-change.jpg';
+import scienceImg from '@src/assets/graphic-design/image-science.jpg';
 
 const projects = [
     {
-        title: 'Express',
+        title: 'TIM BROWN',
         description:
-            'A multi-carrier shipping website for ecommerce businesses',
-        image: expressImg,
-        alt: 'Screenshot of the Express webpage',
+            'A book cover designed for Tim Brown’s new release, ‘Change’',
+        image: changeImg,
+        alt: 'Photo of the Tim Brown‘s Change book',
     },
     {
-        title: 'TRANSFER',
-        description:
-            'Site for low-cost money transfers and sending money within seconds',
-        image: transferImg,
-        alt: 'Screenshot of the Transfer webpage',
+        title: 'BOXED WATER',
+        description: 'A simple packaging concept made for Boxed Water',
+        image: waterImg,
+        alt: 'Photo of a Bottle of Boxed Water',
     },
     {
-        title: 'PHOTON',
+        title: 'SCIENCE!',
         description:
-            'A state-of-the-art music player with high-resolution audio and DSP effects',
-        image: photonImg,
-        alt: 'Screenshot of the Photon webpage',
-    },
-    {
-        title: 'BUILDER',
-        description:
-            'Connects users with local contractors based on their location',
-        image: builderImg,
-        alt: 'Screenshot of the Builder webpage',
-    },
-    {
-        title: 'BLOGR',
-        description:
-            'Blogr is a platform for creating an online blog or publication',
-        image: blogrImg,
-        alt: 'Screenshot of the Blogr webpage',
-    },
-    {
-        title: 'CAMP',
-        description:
-            'Get expert training in coding, data, design, and digital marketing',
-        image: campImg,
-        alt: 'Screenshot of the Camp webpage',
+            'A poster made in collaboration with the Federal Art Project',
+        image: scienceImg,
+        alt: 'Photo of a Science Poster',
     },
 ];
 ---
 
-<Layout title="Web Design | by Designo">
+<Layout title="Graphic Design | by Designo">
     <Header
-        title="Web Design"
-        body="We build websites that serve as powerful marketing tools and bring memorable brand experiences."
+        title="Graphic Design"
+        body="We deliver eye-catching branding materials that are tailored to meet your business objectives."
         bg="web"
     />
     <Projects projects={projects} />
-    <Navigation webLink={false} />
+    <Navigation graphicLink={false} />
     <ContactCTA />
 </Layout>
