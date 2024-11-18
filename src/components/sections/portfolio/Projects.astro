@@ -35,10 +35,8 @@ const { projects } = Astro.props;
     .projects {
         padding-inline: var(--space-lateral);
         margin-bottom: 6.25rem;
-        display: flex;
-        flex-direction: column;
+        display: grid;
         row-gap: 2.5rem;
-        align-items: stretch;
     }
     .card {
         display: flex;
@@ -97,13 +95,12 @@ const { projects } = Astro.props;
     }
     @media (min-width: 1000px) {
         .projects {
-            flex-direction: row;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
             column-gap: 1.875rem;
             margin-bottom: 10rem;
         }
         .card {
-            flex: 1 1 18.75rem;
             flex-direction: column;
             &__image,
             &__info {

@@ -5,7 +5,9 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
 ---
 
 <div class="navbar">
-    <Image class="navbar__logo" src={Logo} alt="Designo Logo" />
+    <a class="navbar__home-link" href="/">
+        <Image class="navbar__logo" src={Logo} alt="Designo Logo" />
+    </a>
     <nav class="navbar__menu" data-target="navigation-menu">
         <a href="" class="navbar__menu__item"> our company </a>
         <a href="" class="navbar__menu__item"> locations </a>
@@ -24,6 +26,11 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
         padding: 2.125rem var(--space-lateral);
         background-color: var(--color-white);
         position: relative;
+        &__home-link {
+            display: block;
+            width: fit-content;
+            height: fit-content;
+        }
         &__logo {
             width: 12.625rem;
             height: auto;

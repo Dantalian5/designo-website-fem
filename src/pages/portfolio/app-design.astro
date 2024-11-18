@@ -1,0 +1,61 @@
+---
+import Layout from '@src/layouts/BaseLayout.astro';
+import Header from '@src/components/sections/portfolio/Header.astro';
+import Projects from '@src/components/sections/portfolio/Projects.astro';
+import Navigation from '@src/components/sections/shared/Navigation.astro';
+import ContactCTA from '@src/components/sections/shared/ContactCTA.astro';
+
+import airfilterImg from '@src/assets/app-design/image-airfilter.jpg';
+import eyecamImg from '@src/assets/app-design/image-eyecam.jpg';
+import faceitImg from '@src/assets/app-design/image-faceit.jpg';
+import todoImg from '@src/assets/app-design/image-todo.jpg';
+import loopstudiosImg from '@src/assets/app-design/image-loopstudios.jpg';
+
+const projects = [
+    {
+        title: 'AIRFILTER',
+        description:
+            'Solving the problem of poor indoor air quality by filtering the air',
+        image: airfilterImg,
+        alt: 'Screenshot of the Airfilter webpage',
+    },
+    {
+        title: 'EYECAM',
+        description:
+            'Product that lets you edit your favorite photos and videos at any time',
+        image: eyecamImg,
+        alt: 'Screenshot of the EyeCam webpage',
+    },
+    {
+        title: 'FACEIT',
+        description:
+            'Get to meet your favorite internet superstar with the faceit app',
+        image: faceitImg,
+        alt: 'Screenshot of the FaceIt webpage',
+    },
+    {
+        title: 'TODO',
+        description:
+            'A todo app that features cloud sync with light and dark mode',
+        image: todoImg,
+        alt: 'Screenshot of the Todo app webpage',
+    },
+    {
+        title: 'LOOPSTUDIOS',
+        description: 'A VR experience app made for Loopstudios',
+        image: loopstudiosImg,
+        alt: 'Screenshot of the Loop Studios webpage',
+    },
+];
+---
+
+<Layout title="App Design | by Designo">
+    <Header
+        title="App Design"
+        body="We build websites that serve as powerful marketing tools and bring memorable brand experiences."
+        bg="web"
+    />
+    <Projects projects={projects} />
+    <Navigation appLink={false} />
+    <ContactCTA />
+</Layout>
