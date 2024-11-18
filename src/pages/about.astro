@@ -1,0 +1,221 @@
+---
+import Layout from '@src/layouts/BaseLayout.astro';
+import ContactCTA from '@src/components/sections/shared/ContactCTA.astro';
+---
+
+<Layout title="Our Company | by Designo">
+    <header class="box-section leaf-bg">
+        <div class="box-section__wrapper about-us">
+            <div class="box-section__image">
+                <picture>
+                    <source
+                        srcset="/assets/about/mobile/image-about-hero.jpg"
+                        media="(max-width: 43.75rem)"
+                    />
+                    <source
+                        srcset="/assets/about/tablet/image-about-hero.jpg"
+                        media="(max-width: 75rem)"
+                    />
+                    <img
+                        class="box-section__image__img"
+                        src="/assets/about/desktop/image-about-hero.jpg"
+                        alt="People around a table, working together"
+                    />
+                </picture>
+            </div>
+            <div class="box-section__info about-us__info">
+                <h1 class="about-us__title">About Us</h1>
+                <p class="about-us__description">
+                    Founded in 2010, we are a creative agency that produces
+                    lasting results for our clients. We’ve partnered with many
+                    startups, corporations, and nonprofits alike to craft
+                    designs that make real impact. We’re always looking forward
+                    to creating brands, products, and digital experiences that
+                    connect with our clients’ audiences.
+                </p>
+            </div>
+        </div>
+    </header>
+    <section class="box-section">
+        <div class="box-section__wrapper talent">
+            <div class="box-section__image">
+                <picture>
+                    <source
+                        srcset="/assets/about/mobile/image-world-class-talent.jpg"
+                        media="(max-width: 43.75rem)"
+                    />
+                    <source
+                        srcset="/assets/about/tablet/image-world-class-talent.jpg"
+                        media="(max-width: 75rem)"
+                    />
+                    <img
+                        class="box-section__image__img"
+                        src="/assets/about/desktop/image-world-class-talent.jpg"
+                        alt="People around a table, working together"
+                    />
+                </picture>
+            </div>
+            <div class="box-section__info">
+                <h1 class="talent__title">World-class talent</h1>
+                <p class="talent__description">
+                    We are a crew of strategists, problem-solvers, and
+                    technologists. Every design is thoughtfully crafted from
+                    concept to launch, ensuring success in its given market. We
+                    are constantly updating our skills in a myriad of platforms. <br
+                    /><br />
+                    Our team is multi-disciplinary and we are not merely interested
+                    in form — content and meaning are just as important. We give
+                    great importance to craftsmanship, service, and prompt delivery.
+                    Clients have always been impressed with our high-quality outcomes
+                    that encapsulates their brand’s story and mission.
+                </p>
+            </div>
+        </div>
+    </section>
+    <ContactCTA />
+</Layout>
+<style lang="scss">
+    .box-section {
+        &__wrapper {
+            overflow: hidden;
+        }
+        &__image__img {
+            width: 100%;
+            height: auto;
+        }
+        &__info {
+            padding-inline: var(--space-lateral);
+            padding-block: 5rem;
+            text-align: center;
+            font-style: normal;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+    }
+    .about-us {
+        background-color: var(--color-primary);
+        background-image: url('/assets/about/mobile/bg-pattern-hero-about-mobile.svg');
+        background-repeat: no-repeat;
+        background-position: top -75% right;
+        &__title {
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.12; /* 112.5% */
+            color: var(--color-white);
+        }
+        &__description {
+            font-size: 0.9375rem;
+            font-weight: 400;
+            line-height: 1.66; /* 166.667% */
+            color: var(--color-white);
+        }
+    }
+    .talent {
+        background-color: #fdf3f0;
+        background-image: url('/assets/shared/desktop/bg-pattern-three-circles.svg');
+        background-repeat: no-repeat;
+        background-position: bottom -40px left;
+        &__title {
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.12; /* 112.5% */
+            color: var(--color-primary);
+        }
+        &__description {
+            font-size: 0.9375rem;
+            font-weight: 400;
+            line-height: 1.66; /* 166.667% */
+            color: var(--color-black);
+        }
+    }
+    @media (min-width: 43.75rem) {
+        .box-section {
+            padding-inline: var(--space-lateral);
+            margin-bottom: 7.5rem;
+            &__wrapper {
+                border-radius: 15px;
+            }
+            &__info {
+                padding: 4rem 3.625rem;
+                gap: 2rem;
+            }
+        }
+        .about-us {
+            background-image: url('/assets/about/desktop/bg-pattern-hero-about-desktop.svg');
+            background-repeat: no-repeat;
+            background-position: top -110px left -120px;
+            &__title {
+                font-size: 3rem;
+                line-height: 1;
+            }
+            &__description {
+                font-size: 1rem;
+                line-height: 1.62;
+            }
+        }
+        .talent {
+            background-position: bottom 44px right 10px;
+            &__title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            &__description {
+                font-size: 1rem;
+                line-height: 1.62;
+            }
+        }
+    }
+    @media (min-width: 75rem) {
+        .leaf-bg {
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                top: 70%;
+                left: 0;
+                width: 1006px;
+                height: 594px;
+                border-radius: 297px 297px 297px 0px;
+                opacity: 0.5023;
+                background-color: var(--color-light-grey);
+                z-index: -1;
+            }
+        }
+        .box-section {
+            margin-bottom: 10rem;
+            &__wrapper {
+                display: flex;
+                align-items: stretch;
+                &.talent {
+                    flex-direction: row;
+                }
+                &.about-us {
+                    flex-direction: row-reverse;
+                }
+            }
+            &__image {
+                flex: 1 1 28.125rem;
+                &__img {
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            &__info {
+                flex: 1 1 38.125rem;
+                text-align: left;
+                align-items: flex-start;
+                padding-inline: 5.625rem;
+            }
+        }
+        .about-us {
+            background-position: bottom left;
+        }
+        .talent {
+            background-position: bottom right 197px;
+        }
+    }
+</style>
