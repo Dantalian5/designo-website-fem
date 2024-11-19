@@ -1,0 +1,19 @@
+.bg-light {
+  background-color: var(--color-white);
+  color: var(--color-grey-dark);
+}
+
+.bg-dark {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-grey-dark);
+}

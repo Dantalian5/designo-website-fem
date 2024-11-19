@@ -1,10 +1,11 @@
 :root {
   --color-primary: #E7816B;
-  --color-secondary: #FFAD9B;
+  --color-secondary--light: #FFAD9B;
+  --color-secondary: #FDF3F0;
   --color-white: #FFFFFF;
   --color-black: #1D1C1E;
-  --color-light-grey: #F1F3F5;
-  --color-dark-grey: #333136;
+  --color-grey-light: #F1F3F5;
+  --color-grey-dark: #333136;
 
   --space-lateral: max(1.5rem, 6%);
 }

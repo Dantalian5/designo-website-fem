@@ -9,9 +9,9 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
         <Image class="navbar__logo" src={Logo} alt="Designo Logo" />
     </a>
     <nav class="navbar__menu" data-target="navigation-menu">
-        <a href="/about" class="navbar__menu__item"> our company </a>
-        <a href="/location" class="navbar__menu__item"> locations </a>
-        <a href="/contact" class="navbar__menu__item"> contact </a>
+        <a href="/about" class="navbar__menu__item link"> our company </a>
+        <a href="/location" class="navbar__menu__item link"> locations </a>
+        <a href="/contact" class="navbar__menu__item link"> contact </a>
     </nav>
     <div class="navbar__btn">
         <Hamburguer />
@@ -56,19 +56,6 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
             &__item {
                 color: var(--color-white);
                 font-size: 1.5rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 1.04; /* 104.167% */
-                letter-spacing: 2px;
-                text-transform: uppercase;
-                &:hover {
-                    text-decoration-line: underline;
-                    text-decoration-style: solid;
-                    text-decoration-skip-ink: none;
-                    text-decoration-thickness: 0.5px;
-                    text-underline-offset: auto;
-                    text-underline-position: from-font;
-                }
             }
             &.active {
                 opacity: 1;
@@ -95,7 +82,7 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
                 background: none;
                 &__item {
                     color: var(--color-dark-grey);
-                    font-size: 0.875rem;
+                    font-size: 14px;
                     font-style: normal;
                     line-height: 1; /* 100% */
                     letter-spacing: 2px;

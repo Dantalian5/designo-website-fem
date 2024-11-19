@@ -3,7 +3,7 @@ import Button from '@src/components/commons/Button.astro';
 ---
 
 <section class="section-cta">
-    <div class="cta__wrapper">
+    <div class="cta__wrapper bg-primary">
         <div class="cta__info">
             <p class="cta__title">Let’s talk about <br /> your project</p>
             <p class="cta__body">
@@ -37,7 +37,6 @@ import Button from '@src/components/commons/Button.astro';
             justify-content: space-between;
             gap: 2rem;
             border-radius: 15px;
-            background-color: var(--color-primary);
             background-image: url('/assets/shared/desktop/bg-pattern-call-to-action.svg');
             background-repeat: no-repeat;
             background-position: center left 43%;
@@ -45,7 +44,6 @@ import Button from '@src/components/commons/Button.astro';
             padding-block: 4rem;
         }
         &__info {
-            color: var(--color-white);
             text-align: center;
             font-style: normal;
             max-width: 28.125rem;

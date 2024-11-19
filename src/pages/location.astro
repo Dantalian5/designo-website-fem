@@ -1,0 +1,183 @@
+---
+import Layout from '@src/layouts/BaseLayout.astro';
+import ContactCTA from '@src/components/sections/shared/ContactCTA.astro';
+
+const locations = [
+    {
+        country: 'Canada',
+        address: [
+            'Designo Central Office',
+            '3886 Wellington Street',
+            'Toronto, Ontario M9C 3J5',
+        ],
+        contact: ['P : +1 253-863-8967', 'M : contact@designo.co'],
+        images: [
+            '/assets/locations/desktop/image-map-canada.png',
+            '/assets/locations/tablet/image-map-canada.png',
+        ],
+        alt: 'Map of Canadas location',
+    },
+    {
+        country: 'Australia',
+        address: [
+            'Designo AU Office',
+            '19 Balonne Street ',
+            'New South Wales 2443',
+        ],
+        contact: ['P : (02) 6720 9092', 'M : contact@designo.au'],
+        images: [
+            '/assets/locations/desktop/image-map-australia.png',
+            '/assets/locations/tablet/image-map-australia.png',
+        ],
+        alt: 'Map of Australias location',
+    },
+    {
+        country: 'United Kingdom',
+        address: ['Designo UK Office', '13 Colorado Way', 'Rhyd-y-fro SA8 9GA'],
+        contact: ['P : 078 3115 1400', 'M : contact@designo.uk'],
+        images: [
+            '/assets/locations/desktop/image-map-united-kingdom.png',
+            '/assets/locations/tablet/image-map-uk.png',
+        ],
+        alt: 'Map of UKs location',
+    },
+];
+---
+
+<Layout title="Location | Designo">
+    {
+        locations.map((location) => (
+            <section class="location">
+                <div class="location__image bg-secondary">
+                    <picture>
+                        <source
+                            srcset={location.images[0]}
+                            media="(min-width: 75rem)"
+                        />
+                        <source
+                            srcset={location.images[1]}
+                            media="(min-width: 43.75rem)"
+                        />
+                        <img
+                            class="location__image__img"
+                            src={location.images[0]}
+                            alt={location.alt}
+                        />
+                    </picture>
+                </div>
+                <div class="location__info bg-secondary">
+                    <h1 class="location__info__country font-h2">
+                        {location.country}
+                    </h1>
+                    <p class="location__info__body font-secondary">
+                        <span class="font--bold">{location.address[0]}</span>
+                        <br />
+                        {location.address[1]}
+                        <br />
+                        {location.address[2]}
+                    </p>
+                    <p class="location__info__body font-secondary">
+                        <span class="font--bold">Contact</span>
+                        <br />
+                        {location.contact[0]}
+                        <br />
+                        {location.contact[1]}
+                    </p>
+                </div>
+            </section>
+        ))
+    }
+    <ContactCTA />
+</Layout>
+<style lang="scss">
+    .location {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        margin-bottom: 2rem;
+        &:nth-child(4) {
+            margin-bottom: 7.5rem;
+        }
+
+        &__image {
+            width: 100%;
+            overflow: hidden;
+            &__img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__info {
+            width: 100%;
+            overflow: hidden;
+            padding-inline: var(--space-lateral);
+            padding-block: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+
+            text-align: center;
+
+            background-image: url('/assets/shared/desktop/bg-pattern-three-circles.svg');
+            background-repeat: no-repeat;
+            background-position: top left;
+            &__country {
+                width: 100%;
+                color: var(--color-primary);
+            }
+        }
+    }
+    @media (min-width: 43.75rem) {
+        .location {
+            padding-inline: var(--space-lateral);
+            gap: 2rem;
+            margin-bottom: 7.5rem;
+            &__image {
+                border-radius: 15px;
+            }
+            &__info {
+                border-radius: 15px;
+                padding: 5.5rem 4.6875rem;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: flex-start;
+                text-align: left;
+                background-position: bottom left;
+                &__country {
+                    margin-top: auto;
+                }
+                &__body {
+                    flex: 1 1 40%;
+                }
+            }
+        }
+    }
+    @media (min-width: 75rem) {
+        .location {
+            flex-direction: row;
+            &:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            margin-bottom: 2rem;
+            &:nth-child(4) {
+                margin-bottom: 10rem;
+            }
+            &__image {
+                flex: 1 1 350px;
+                &__img {
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            &__info {
+                flex: 1 1 730px;
+                padding: 2rem 5.9375rem;
+            }
+        }
+    }
+</style>

@@ -5,71 +5,76 @@ import SvgFem from '@src/components/svg/SvgFem.astro';
 import SvgWeb from '@src/components/svg/SvgWeb.astro';
 import SvgGithub from '@src/components/svg/SvgGithub.astro';
 import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
+
+const socials = [
+    {
+        name: 'My Github Profile',
+        href: 'https://www.linkedin.com/in/marcos-valenzuela-dev/',
+        icon: SvgGithub,
+    },
+    {
+        name: 'My Linkedin Profile',
+        href: 'https://www.linkedin.com/in/marcos-valenzuela-dev/',
+        icon: SvgLinkedin,
+    },
+    {
+        name: 'My Frontend Mentor Profile',
+        href: 'https://www.frontendmentor.io/profile/Dantalian5',
+        icon: SvgFem,
+    },
+    {
+        name: 'My Portfolio',
+        href: 'https://valenzuela.dev',
+        icon: SvgWeb,
+    },
+];
 ---
 
-<footer class="footer">
+<footer class="footer bg-dark">
     <div class="footer__top">
         <Image class="footer__logo" src={Logo} alt="Designo Logo" />
         <span class="footer__divider"></span>
         <nav class="footer__nav">
             <ul class="footer__nav__list">
                 <li class="footer__nav__item">
-                    <a href="/about" class="footer__nav__link">Our Company</a>
+                    <a href="/about" class="link">Our Company</a>
                 </li>
                 <li class="footer__nav__item">
-                    <a href="/location" class="footer__nav__link">Locations</a>
+                    <a href="/location" class="link">Locations</a>
                 </li>
                 <li class="footer__nav__item">
-                    <a href="/contact" class="footer__nav__link">Contact</a>
+                    <a href="/contact" class="link">Contact</a>
                 </li>
             </ul>
         </nav>
     </div>
     <div class="footer__bottom">
-        <p class="footer__info">
-            Designo Central Office <br /><span
-                >3886 Wellington Street <br /> Toronto, Ontario M9C 3J5</span
-            >
+        <p class="footer__info font-body">
+            <span class="font--bold"> Designo Central Office </span>
+            <br />
+            3886 Wellington Street <br /> Toronto, Ontario M9C 3J5
         </p>
-        <p class="footer__info">
-            Contact Us (Central Office) <br /><span
-                >P : +1 253-863-8967 <br /> M : contact@designo.co</span
-            >
+        <p class="footer__info font-body">
+            <span class="font--bold"> Contact Us (Central Office) </span>
+            <br />
+            P : +1 253-863-8967 <br /> M : contact@designo.co
         </p>
         <nav class="footer__socials">
             <ul class="footer__socials__list">
-                <li class="footer__socials__item">
-                    <a
-                        href="https://github.com/Dantalian5"
-                        aria-label="Github"
-                        title="Github"
-                        class="footer__socials__link"><SvgGithub /></a
-                    >
-                </li>
-                <li class="footer__socials__item">
-                    <a
-                        href="https://www.linkedin.com/in/marcos-valenzuela-dev/"
-                        aria-label="Linkedin"
-                        title="Linkedin"
-                        class="footer__socials__link"><SvgLinkedin /></a
-                    >
-                </li>
-                <li class="footer__socials__item">
-                    <a
-                        href="https://www.frontendmentor.io/profile/Dantalian5"
-                        aria-label="FrontendMentor"
-                        title="FrontendMentor"
-                        class="footer__socials__link"><SvgFem /></a
-                    >
-                </li>
-                <li class="footer__socials__item">
-                    <a
-                        href="https://valenzuela.dev"
-                        aria-label="Portfolio"
-                        title="Portfolio"
-                        class="footer__socials__link"><SvgWeb /></a
-                    >
-                </li>
+                {
+                    socials.map((social) => (
+                        <li class="footer__socials__item">
+                            <a
+                                href={social.href}
+                                aria-label={social.name}
+                                title={social.name}
+                                class="footer__socials__link"
+                            >
+                                <social.icon />
+                            </a>
+                        </li>
+                    ))
+                }
             </ul>
         </nav>
     </div>
@@ -78,7 +83,6 @@ import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
     .footer {
         padding-inline: var(--space-lateral);
         padding-block: 4rem;
-        background-color: var(--color-black);
         &__top {
             display: flex;
             flex-direction: column;
@@ -94,7 +98,6 @@ import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
         &__divider {
             width: 100%;
             height: 1px;
-            background-color: var(--color-white);
             opacity: 0.1;
         }
         &__nav {
@@ -109,23 +112,6 @@ import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
             &__item {
                 list-style: none;
             }
-            &__link {
-                color: var(--color-white);
-                font-size: 0.875rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 1; /* 100% */
-                letter-spacing: 2px;
-                text-transform: uppercase;
-                &:hover {
-                    text-decoration-line: underline;
-                    text-decoration-style: solid;
-                    text-decoration-skip-ink: none;
-                    text-decoration-thickness: 0.5px;
-                    text-underline-offset: auto;
-                    text-underline-position: from-font;
-                }
-            }
         }
         &__bottom {
             display: flex;
@@ -136,16 +122,8 @@ import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
         }
         &__info {
             width: fit-content;
-            color: var(--color-white);
             text-align: center;
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 1.62; /* 162.5% */
             opacity: 0.5;
-            & span {
-                font-weight: 400;
-            }
         }
         &__socials {
             width: fit-content;
@@ -166,7 +144,7 @@ import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
                 font-size: 1.5rem;
                 &:hover {
                     transform: scale(1.1);
-                    color: var(--color-secondary);
+                    color: var(--color-secondary--light);
                 }
             }
         }

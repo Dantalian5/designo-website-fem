@@ -5,6 +5,7 @@ interface Props {
 
 import '@fontsource/jost/400.css';
 import '@fontsource/jost/500.css';
+import '@fontsource/jost/700.css';
 import '@style/style.scss';
 const { title } = Astro.props;
 import Navbar from '@src/components/sections/shared/Navbar.astro';
@@ -81,7 +82,7 @@ import Footer from '@src/components/sections/shared/Footer.astro';
         <meta name="author" content="MV" />
         <title>{title}</title>
     </head>
-    <body class="body">
+    <body class="body bg-light">
         <Navbar />
         <slot />
         <Footer />
@@ -92,6 +93,5 @@ import Footer from '@src/components/sections/shared/Footer.astro';
         width: clamp(18.75rem, 100%, 90rem);
         margin-inline: auto;
         font-family: 'Jost', sans-serif;
-        background-color: var(--color-white);
     }
 </style>

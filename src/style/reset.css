@@ -33,8 +33,11 @@ h3,
 h4,
 button,
 input,
-label {
-    line-height: 1.1;
+label,
+a {
+    line-height: normal;
+    font: inherit;
+    color: inherit;
 }
 
 /* Balance text wrapping on headings */
