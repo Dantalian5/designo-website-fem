@@ -1,21 +1,16 @@
 ---
-import { Image } from 'astro:assets';
-import Logo from '@src/assets/shared/logo-dark.png';
+import Logo from '@src/components/commons/Logo.astro';
 import Hamburguer from '@src/components/commons/Hamburguer.astro';
 ---
 
 <div class="navbar">
-    <a class="navbar__home-link" href="/">
-        <Image class="navbar__logo" src={Logo} alt="Designo Logo" />
-    </a>
+    <Logo dark />
     <nav class="navbar__menu" data-target="navigation-menu">
         <a href="/about" class="navbar__menu__item link"> our company </a>
         <a href="/location" class="navbar__menu__item link"> locations </a>
         <a href="/contact" class="navbar__menu__item link"> contact </a>
     </nav>
-    <div class="navbar__btn">
-        <Hamburguer />
-    </div>
+    <Hamburguer />
 </div>
 <style lang="scss">
     .navbar {
@@ -26,15 +21,6 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
         padding: 2.125rem var(--space-lateral);
         background-color: var(--color-white);
         position: relative;
-        &__home-link {
-            display: block;
-            width: fit-content;
-            height: fit-content;
-        }
-        &__logo {
-            width: 12.625rem;
-            height: auto;
-        }
         &__menu {
             position: absolute;
             top: -100%;
@@ -63,9 +49,6 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
                 transform: translateY(0);
             }
         }
-        &__bnt {
-            width: fit-content;
-        }
     }
     @media (min-width: 43.75rem) {
         .navbar {
@@ -87,9 +70,6 @@ import Hamburguer from '@src/components/commons/Hamburguer.astro';
                     line-height: 1; /* 100% */
                     letter-spacing: 2px;
                 }
-            }
-            &__btn {
-                display: none;
             }
         }
     }

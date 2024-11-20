@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import Logo from '@src/assets/shared/logo-light.png';
 import SvgFem from '@src/components/svg/SvgFem.astro';
 import SvgWeb from '@src/components/svg/SvgWeb.astro';
 import SvgGithub from '@src/components/svg/SvgGithub.astro';
 import SvgLinkedin from '@src/components/svg/SvgLinkedin.astro';
+import Logo from '@src/components/commons/Logo.astro';
 
 const socials = [
     {
@@ -32,8 +31,8 @@ const socials = [
 
 <footer class="footer bg-dark">
     <div class="footer__top">
-        <Image class="footer__logo" src={Logo} alt="Designo Logo" />
-        <span class="footer__divider"></span>
+        <Logo />
+        <span class="footer__divider bg-light"></span>
         <nav class="footer__nav">
             <ul class="footer__nav__list">
                 <li class="footer__nav__item">
@@ -90,10 +89,6 @@ const socials = [
             align-items: center;
             gap: 2rem;
             margin-bottom: 2.5rem;
-        }
-        &__logo {
-            width: 12.625rem;
-            height: auto;
         }
         &__divider {
             width: 100%;
