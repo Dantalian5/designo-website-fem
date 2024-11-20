@@ -29,7 +29,7 @@
   .bg-leaf {
     position: relative;
 
-    &::before {
+    &::after {
       content: '';
       position: absolute;
       width: 1006px;

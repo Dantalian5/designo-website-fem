@@ -5,8 +5,10 @@ import Button from '@src/components/commons/Button.astro';
 <section class="section-cta">
     <div class="cta__wrapper bg-primary">
         <div class="cta__info">
-            <p class="cta__title">Let’s talk about <br /> your project</p>
-            <p class="cta__body">
+            <p class="cta__title font-h2">
+                Let’s talk about <br /> your project
+            </p>
+            <p class="font-secondary">
                 Ready to take it to the next level? Contact us today and find
                 out how our expertise can help your business grow.
             </p>
@@ -45,19 +47,10 @@ import Button from '@src/components/commons/Button.astro';
         }
         &__info {
             text-align: center;
-            font-style: normal;
             max-width: 28.125rem;
         }
         &__title {
-            font-size: 2rem;
-            font-weight: 500;
-            line-height: 1.12; /* 112.5% */
             margin-bottom: 0.5rem;
-        }
-        &__body {
-            font-size: 0.9375rem;
-            font-weight: 400;
-            line-height: 1.66; /* 166.667% */
         }
         &__btn {
             width: fit-content;
@@ -75,13 +68,7 @@ import Button from '@src/components/commons/Button.astro';
                 background-position: center left 10%;
             }
             &__title {
-                font-size: 2.5rem;
-                line-height: 1;
                 margin-bottom: 1rem;
-            }
-            &__body {
-                font-size: 1rem;
-                line-height: 1.62;
             }
         }
     }

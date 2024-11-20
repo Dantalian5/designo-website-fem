@@ -15,7 +15,7 @@ const { projects } = Astro.props;
 <section class="projects">
     {
         projects.map((project) => (
-            <div class="card">
+            <div class="card bg-secondary">
                 <div class="card__image">
                     <Image
                         class="card__image__img"
@@ -24,8 +24,8 @@ const { projects } = Astro.props;
                     />
                 </div>
                 <div class="card__info">
-                    <h2 class="card__info__heading">{project.title}</h2>
-                    <p class="card__info__description">{project.description}</p>
+                    <h2 class="font-h3 foreground-primary">{project.title}</h2>
+                    <p class="font-body">{project.description}</p>
                 </div>
             </div>
         ))
@@ -42,7 +42,6 @@ const { projects } = Astro.props;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        background-color: #fdf3f0;
         border-radius: 15px;
         overflow: hidden;
         cursor: pointer;
@@ -65,21 +64,6 @@ const { projects } = Astro.props;
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-style: normal;
-            &__heading {
-                color: var(--color-primary);
-                font-size: 1.25rem;
-                font-weight: 500;
-                line-height: 1.625rem; /* 130% */
-                letter-spacing: 5px;
-                text-transform: uppercase;
-            }
-            &__description {
-                color: var(--color-dark-grey);
-                font-size: 1rem;
-                font-weight: 400;
-                line-height: 1.625rem; /* 162.5% */
-            }
         }
     }
     @media (min-width: 43.75rem) {
@@ -119,11 +103,8 @@ const { projects } = Astro.props;
                 transform-origin: top center;
                 transition: transform 0.5s;
             }
-            & .card__info {
-                &__heading,
-                &__description {
-                    color: var(--color-white);
-                }
+            & .card__info * {
+                color: var(--color-white);
             }
         }
     }

@@ -106,18 +106,8 @@ const items = [
                     margin-bottom: 2rem;
                 }
             }
-            &::after {
-                position: absolute;
-                content: '';
-                width: 1006px;
-                height: 594px;
-                border-radius: 297px 0 297px 297px;
-                opacity: 0.5;
-                background: var(--color-light-grey);
-                z-index: -1;
-            }
         }
-        .bg-leaf::before {
+        .bg-leaf::after {
             top: 125px;
             right: 0;
             transform: rotate(180deg);

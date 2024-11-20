@@ -27,8 +27,8 @@ const locations = [
 ---
 
 <Layout title="Our Company | by Designo">
-    <header class="box-section box-section--nm leaf-bg">
-        <div class="box-section__wrapper about-us">
+    <header class="header box-section bg-leaf">
+        <div class="box-section__wrapper about-us bg-primary">
             <div class="box-section__image">
                 <picture>
                     <source
@@ -47,8 +47,8 @@ const locations = [
                 </picture>
             </div>
             <div class="box-section__info about-us__info">
-                <h1 class="about-us__title">About Us</h1>
-                <p class="about-us__description">
+                <h1 class="font-h1">About Us</h1>
+                <p class="font-secondary">
                     Founded in 2010, we are a creative agency that produces
                     lasting results for our clients. We’ve partnered with many
                     startups, corporations, and nonprofits alike to craft
@@ -60,7 +60,7 @@ const locations = [
         </div>
     </header>
     <section class="box-section">
-        <div class="box-section__wrapper talent">
+        <div class="box-section__wrapper talent bg-secondary">
             <div class="box-section__image">
                 <picture>
                     <source
@@ -79,8 +79,8 @@ const locations = [
                 </picture>
             </div>
             <div class="box-section__info">
-                <h2 class="talent__title">World-class talent</h2>
-                <p class="talent__description">
+                <h2 class="font-h2 foreground-primary">World-class talent</h2>
+                <p class="font-secondary">
                     We are a crew of strategists, problem-solvers, and
                     technologists. Every design is thoughtfully crafted from
                     concept to launch, ensuring success in its given market. We
@@ -95,14 +95,14 @@ const locations = [
             </div>
         </div>
     </section>
-    <section class="location">
+    <section class="location bg-leaf">
         {
             locations.map((location) => (
                 <div class="location__wrapper">
-                    <div class="location__img circle-bg">
+                    <div class="location__img bg-circle">
                         <Image src={location.img} alt="Canada illustration" />
                     </div>
-                    <p class="location__name">{location.name}</p>
+                    <p class="font-h3">{location.name}</p>
                     <Button href={location.href} variant="primary">
                         See Location
                     </Button>
@@ -111,7 +111,7 @@ const locations = [
         }
     </section>
     <section class="box-section">
-        <div class="box-section__wrapper deal">
+        <div class="box-section__wrapper deal bg-secondary">
             <div class="box-section__image">
                 <picture>
                     <source
@@ -130,8 +130,8 @@ const locations = [
                 </picture>
             </div>
             <div class="box-section__info">
-                <h2 class="deal__title">The real deal</h2>
-                <p class="deal__description">
+                <h2 class="font-h2 foreground-primary">The real deal</h2>
+                <p class="font-secondary">
                     As strategic partners in our clients’ businesses, we are
                     ready to take on any challenge as our own. Solving real
                     problems require empathy and collaboration, and we strive to
@@ -150,9 +150,8 @@ const locations = [
 </Layout>
 <style lang="scss">
     .box-section {
-        margin-bottom: 7.5rem;
-        &--nm {
-            margin-bottom: 0;
+        &:not(.header) {
+            margin-bottom: 7.5rem;
         }
         &__wrapper {
             overflow: hidden;
@@ -174,41 +173,15 @@ const locations = [
         }
     }
     .about-us {
-        background-color: var(--color-primary);
         background-image: url('/assets/about/mobile/bg-pattern-hero-about-mobile.svg');
         background-repeat: no-repeat;
         background-position: top -75% right;
-        &__title {
-            font-size: 2rem;
-            font-weight: 500;
-            line-height: 1.12; /* 112.5% */
-            color: var(--color-white);
-        }
-        &__description {
-            font-size: 0.9375rem;
-            font-weight: 400;
-            line-height: 1.66; /* 166.667% */
-            color: var(--color-white);
-        }
     }
     .deal,
     .talent {
-        background-color: #fdf3f0;
         background-image: url('/assets/shared/desktop/bg-pattern-three-circles.svg');
         background-repeat: no-repeat;
         background-position: bottom -40px left;
-        &__title {
-            font-size: 2rem;
-            font-weight: 500;
-            line-height: 1.12; /* 112.5% */
-            color: var(--color-primary);
-        }
-        &__description {
-            font-size: 0.9375rem;
-            font-weight: 400;
-            line-height: 1.66; /* 166.667% */
-            color: var(--color-black);
-        }
     }
     .location {
         margin-bottom: 7.5rem;
@@ -224,26 +197,15 @@ const locations = [
             width: 100%;
             align-items: center;
             justify-content: center;
-            &:nth-child(1) .circle-bg::before {
-                background: linear-gradient(
-                    0deg,
-                    rgba(93, 2, 2, 0) 0%,
-                    rgba(93, 2, 2, 0.5) 100%
-                );
+            text-align: center;
+            &:nth-child(1) .bg-circle::before {
+                transform: rotate(0deg);
             }
-            &:nth-child(2) .circle-bg::before {
-                background: linear-gradient(
-                    -90deg,
-                    rgba(93, 2, 2, 0) 0%,
-                    rgba(93, 2, 2, 0.5) 100%
-                );
+            &:nth-child(2) .bg-circle::before {
+                transform: rotate(-90deg);
             }
-            &:nth-child(3) .circle-bg::before {
-                background: linear-gradient(
-                    180deg,
-                    rgba(93, 2, 2, 0) 0%,
-                    rgba(93, 2, 2, 0.5) 100%
-                );
+            &:nth-child(3) .bg-circle::before {
+                transform: rotate(180deg);
             }
         }
         &__img {
@@ -256,27 +218,6 @@ const locations = [
                 width: 100%;
                 height: auto;
             }
-        }
-        &__name {
-            color: var(--color-black);
-            text-align: center;
-            font-size: 1.25rem;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 1.3; /* 130% */
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-    }
-    .circle-bg {
-        &::before {
-            content: '';
-            display: block;
-            inset: 0;
-            position: absolute;
-            z-index: -1;
-            border-radius: 50%;
-            opacity: 0.2;
         }
     }
     @media (min-width: 43.75rem) {
@@ -295,47 +236,16 @@ const locations = [
             background-image: url('/assets/about/desktop/bg-pattern-hero-about-desktop.svg');
             background-repeat: no-repeat;
             background-position: top -110px left -120px;
-            &__title {
-                font-size: 3rem;
-                line-height: 1;
-            }
-            &__description {
-                font-size: 1rem;
-                line-height: 1.62;
-            }
         }
         .deal,
         .talent {
             background-position: bottom 44px right 10px;
-            &__title {
-                font-size: 2.5rem;
-                line-height: 1.2;
-            }
-            &__description {
-                font-size: 1rem;
-                line-height: 1.62;
-            }
         }
         .location {
             row-gap: 5rem;
         }
     }
     @media (min-width: 75rem) {
-        .leaf-bg {
-            position: relative;
-            &::after {
-                content: '';
-                position: absolute;
-                top: 70%;
-                left: 0;
-                width: 1006px;
-                height: 594px;
-                border-radius: 297px 297px 297px 0px;
-                opacity: 0.5023;
-                background-color: var(--color-light-grey);
-                z-index: -1;
-            }
-        }
         .box-section {
             margin-bottom: 10rem;
             &__wrapper {
@@ -380,18 +290,14 @@ const locations = [
             column-gap: 1.875rem;
             margin-bottom: 10rem;
             position: relative;
-            &::before {
-                position: absolute;
-                content: '';
-                width: 1006px;
-                height: 594px;
-                top: 50%;
-                right: -396px;
-                border-radius: 297px 297px 297px 0px;
-                opacity: 0.5023;
-                background: var(--color-light-grey);
-                z-index: -1;
-            }
+        }
+        .header.bg-leaf::after {
+            top: 70%;
+            left: 0;
+        }
+        .location.bg-leaf::after {
+            top: 50%;
+            right: -396px;
         }
     }
 </style>
