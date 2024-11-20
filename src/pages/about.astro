@@ -1,29 +1,7 @@
 ---
 import Layout from '@src/layouts/BaseLayout.astro';
+import LocationCTA from '@src/components/sections/shared/LocationCTA.astro';
 import ContactCTA from '@src/components/sections/shared/ContactCTA.astro';
-import { Image } from 'astro:assets';
-import Button from '@src/components/commons/Button.astro';
-import canadaImg from '@src/assets/shared/illustration-canada.svg';
-import australiaImg from '@src/assets/shared/illustration-australia.svg';
-import ukImg from '@src/assets/shared/illustration-united-kingdom.svg';
-
-const locations = [
-    {
-        name: 'Canada',
-        img: canadaImg,
-        href: '/location',
-    },
-    {
-        name: 'Australia',
-        img: australiaImg,
-        href: '/location',
-    },
-    {
-        name: 'United Kingdom',
-        img: ukImg,
-        href: '/location',
-    },
-];
 ---
 
 <Layout title="Our Company | by Designo">
@@ -95,21 +73,7 @@ const locations = [
             </div>
         </div>
     </section>
-    <section class="location bg-leaf">
-        {
-            locations.map((location) => (
-                <div class="location__wrapper">
-                    <div class="location__img bg-circle">
-                        <Image src={location.img} alt="Canada illustration" />
-                    </div>
-                    <p class="font-h3">{location.name}</p>
-                    <Button href={location.href} variant="primary">
-                        See Location
-                    </Button>
-                </div>
-            ))
-        }
-    </section>
+    <LocationCTA />
     <section class="box-section">
         <div class="box-section__wrapper deal bg-secondary">
             <div class="box-section__image">
@@ -183,43 +147,6 @@ const locations = [
         background-repeat: no-repeat;
         background-position: bottom -40px left;
     }
-    .location {
-        margin-bottom: 7.5rem;
-        padding-inline: var(--space-lateral);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
-        &__wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            &:nth-child(1) .bg-circle::before {
-                transform: rotate(0deg);
-            }
-            &:nth-child(2) .bg-circle::before {
-                transform: rotate(-90deg);
-            }
-            &:nth-child(3) .bg-circle::before {
-                transform: rotate(180deg);
-            }
-        }
-        &__img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 1rem;
-            position: relative;
-            max-width: 202px;
-            & img {
-                width: 100%;
-                height: auto;
-            }
-        }
-    }
     @media (min-width: 43.75rem) {
         .box-section {
             padding-inline: var(--space-lateral);
@@ -241,13 +168,13 @@ const locations = [
         .talent {
             background-position: bottom 44px right 10px;
         }
-        .location {
-            row-gap: 5rem;
-        }
     }
     @media (min-width: 75rem) {
         .box-section {
             margin-bottom: 10rem;
+            &:not(.header) {
+                margin-bottom: 10rem;
+            }
             &__wrapper {
                 display: flex;
                 align-items: stretch;
@@ -284,20 +211,9 @@ const locations = [
             background-image: url('/assets/shared/desktop/bg-pattern-two-circles.svg');
             background-position: bottom left;
         }
-        .location {
-            flex-direction: row;
-            justify-content: space-between;
-            column-gap: 1.875rem;
-            margin-bottom: 10rem;
-            position: relative;
-        }
         .header.bg-leaf::after {
             top: 70%;
             left: 0;
-        }
-        .location.bg-leaf::after {
-            top: 50%;
-            right: -396px;
         }
     }
 </style>

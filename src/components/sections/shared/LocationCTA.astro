@@ -1,0 +1,98 @@
+---
+import { Image } from 'astro:assets';
+import Button from '@src/components/commons/Button.astro';
+import canadaImg from '@src/assets/shared/illustration-canada.svg';
+import australiaImg from '@src/assets/shared/illustration-australia.svg';
+import ukImg from '@src/assets/shared/illustration-united-kingdom.svg';
+
+const locations = [
+    {
+        name: 'Canada',
+        img: canadaImg,
+        href: '/location',
+    },
+    {
+        name: 'Australia',
+        img: australiaImg,
+        href: '/location',
+    },
+    {
+        name: 'United Kingdom',
+        img: ukImg,
+        href: '/location',
+    },
+];
+---
+
+<section class="location bg-leaf">
+    {
+        locations.map((location) => (
+            <div class="location__wrapper">
+                <div class="location__img bg-circle">
+                    <Image src={location.img} alt="Canada illustration" />
+                </div>
+                <p class="font-h3">{location.name}</p>
+                <Button href={location.href} variant="primary">
+                    See Location
+                </Button>
+            </div>
+        ))
+    }
+</section>
+<style lang="scss">
+    .location {
+        margin-bottom: 7.5rem;
+        padding-inline: var(--space-lateral);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            &:nth-child(1) .bg-circle::before {
+                transform: rotate(0deg);
+            }
+            &:nth-child(2) .bg-circle::before {
+                transform: rotate(-90deg);
+            }
+            &:nth-child(3) .bg-circle::before {
+                transform: rotate(180deg);
+            }
+        }
+        &__img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            position: relative;
+            max-width: 202px;
+            & img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    @media (min-width: 43.75rem) {
+        .location {
+            row-gap: 5rem;
+        }
+    }
+    @media (min-width: 75rem) {
+        .location {
+            flex-direction: row;
+            justify-content: space-between;
+            column-gap: 1.875rem;
+            margin-bottom: 10rem;
+            position: relative;
+            &.bg-leaf::after {
+                top: 50%;
+                right: -396px;
+            }
+        }
+    }
+</style>
