@@ -1,0 +1,39 @@
+---
+import Layout from '@src/layouts/BaseLayout.astro';
+import Button from '@src/components/commons/Button.astro';
+---
+
+<Layout title="404 | Designo">
+    <section class="wrapper">
+        <h1 class="title"><span>404</span> - Page Not Found</h1>
+        <p class="description">
+            Sorry, the page you are looking for does not exist.
+        </p>
+        <Button href="/">Go home</Button>
+    </section>
+</Layout>
+<style lang="scss">
+    .wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        padding-inline: var(--space-lateral);
+        padding-block: 4rem;
+    }
+    .title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--color-dark-grey);
+        & span {
+            color: var(--color-primary);
+        }
+    }
+    .description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--color-dark-grey);
+    }
+</style>
