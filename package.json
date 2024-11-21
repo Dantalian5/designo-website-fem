@@ -16,7 +16,8 @@
     "@spotlightjs/astro": "^2.1.11",
     "astro": "^4.16.10",
     "gsap": "^3.12.5",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "prettier": "^3.3.3",

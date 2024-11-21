@@ -53,6 +53,8 @@ const { projects } = Astro.props;
             &__img {
                 width: 100%;
                 height: auto;
+                transition: transform 0.5s;
+                transform-origin: top center;
             }
         }
         &__info {
@@ -100,8 +102,6 @@ const { projects } = Astro.props;
             background-color: var(--color-primary);
             & .card__image__img {
                 transform: scale(1.1);
-                transform-origin: top center;
-                transition: transform 0.5s;
             }
             & .card__info * {
                 color: var(--color-white);
