@@ -74,6 +74,7 @@ import heroImage from '@src/assets/home/image-hero-phone.png';
             perspective-origin: bottom center;
         }
         &__img {
+            animation: none;
             position: absolute;
             left: 50%;
             width: 100%;
@@ -81,7 +82,7 @@ import heroImage from '@src/assets/home/image-hero-phone.png';
             transform-origin: center bottom;
             transition: top 0.1s;
             filter: drop-shadow(20px -40px 50px rgba(93, 2, 2, 0.7));
-            animation: 1s ease-out forwards popIn;
+            animation: 1s ease-out 0.1s forwards popIn;
             & img {
                 width: 100%;
             }
